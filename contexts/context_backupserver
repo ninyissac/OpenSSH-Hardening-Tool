@@ -1,0 +1,2 @@
+LogLevel VERBOSE
+PermitRootLogin forced-commands-only
