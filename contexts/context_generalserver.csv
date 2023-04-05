@@ -1,7 +1,7 @@
 variable, expected_value, action_true, action_true_confirm, action_true_confirm_text, action_true_info, action_false, action_false_confirm, action_false_confirm_text, action_false_info
 
 LogLevel, VERBOSE, None, None, None, You have set LogLevel to VERBOSE, alterValue, y, Do you want to change the value to {}? (Enter yes/no) :, You have set LogLevel to {} which is potentially a risk
-PubkeyAuthentication, yes, None, None, None, Disabled root login, alterValue, y, Change to {}? (enter yes/no) :, The system is configred with root login which is potenitially a risk
+PubkeyAuthentication, yes, None, None, None, PubkeyAuthentication enabled !, alterValue, y, Change to {}? (enter yes/no) :, The system is configred with root login which is potenitially a risk
 PasswordAuthentication, no, None, None, None, You have set PasswordAuthentication to no, alterStandardValue, y, default, You have set PasswordAuthentication to {} which is potentially a risk
 UsePAM, yes, None, None, None, You have set UsePAM to yes, alterStandardValue, y, default, You have set UsePAM to {} which is potentially a risk
 PermitUserEnvironment, no, None, None, None, You have set PermitUserEnvironment no, alterStandardValue, y, default, You have set PermitUserEnvironment to {} which is potentially a risk
