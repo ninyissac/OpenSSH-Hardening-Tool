@@ -4,3 +4,8 @@ LogLevel, VERBOSE, None, None, None, You have set LogLevel to VERBOSE, alterValu
 PermitRootLogin, prohibit-password, None, None, None, Webserver doesn't need root login, alterValue, y, Change to {}? (enter yes/no) :, The system is configred with root login which is potenitially a risk
 PasswordAuthentication, no, None, None, None, You have set PasswordAuthentication to no, alterStandardValue, y, default, You have set PasswordAuthentication to {} which is potentially a risk
 UsePAM, yes, None, None, None, You have set UsePAM to yes, alterStandardValue, y, default, You have set UsePAM to {} which is potentially a risk
+PermitUserEnvironment, no, None, None, None, You have set PermitUserEnvironment no, alterStandardValue, y, default, You have set PermitUserEnvironment to {} which is potentially a risk
+IgnoreRhosts, yes, None, None, None, You have set IgnoreRhosts yes, alterStandardValue, y, default, You have set IgnoreRhosts to {} which is potentially a risk
+X11Forwarding, no, None, None, None, You have set X11Forwarding no, alterStandardValue, y, default, You have set X11Forwarding to {} which is potentially a risk
+AllowTcpForwarding, no, None, None, None, You have set AllowTcpForwarding no, alterStandardValue, y, default, You have set AllowTcpForwarding to {} which is potentially a risk
+
