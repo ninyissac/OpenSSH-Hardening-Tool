@@ -1,5 +1,5 @@
 LogLevel VERBOSE
-PermitRootLogin no
+PubkeyAuthentication yes
 PasswordAuthentication no
 UsePAM yes
 PermitUserEnvironment no
