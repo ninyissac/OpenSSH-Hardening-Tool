@@ -6,6 +6,5 @@ PasswordAuthentication, no, None, None, None, You have set PasswordAuthenticatio
 UsePAM, yes, None, None, None, You have set UsePAM to yes, alterStandardValue, y, default, You have set UsePAM to {} which is potentially a risk
 PermitUserEnvironment, no, None, None, None, You have set PermitUserEnvironment no, alterStandardValue, y, default, You have set PermitUserEnvironment to {} which is potentially a risk
 IgnoreRhosts, yes, None, None, None, You have set IgnoreRhosts yes, alterStandardValue, y, default, You have set IgnoreRhosts to {} which is potentially a risk
-X11Forwarding, no, None, None, None, You have set X11Forwarding no, alterStandardValue, y, default, You have set X11Forwarding to {} which is potentially a risk
 AllowTcpForwarding, no, None, None, None, You have set AllowTcpForwarding no, alterStandardValue, y, default, You have set AllowTcpForwarding to {} which is potentially a risk
-
+MaxAuthTries, 3, None, None, None, You have set MaxAuthTries 3, alterValue, y, default, You have set MaxAuthTries to {} which is potentially a risk

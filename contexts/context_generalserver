@@ -4,6 +4,5 @@ PasswordAuthentication no
 UsePAM yes
 PermitUserEnvironment no
 IgnoreRhosts yes
-X11Forwarding no
 AllowTcpForwarding no
 MaxAuthTries 3
