@@ -19,7 +19,7 @@ def select_context():
     import inquirer
 
     context_questions = [
-        inquirer.List("ctx", "On which context you need to harden?", choices=context_config.keys())
+        inquirer.List("ctx", "Please provide the operational context of the server system", choices=context_config.keys())
     ]
 
     ans = inquirer.prompt(context_questions)
@@ -33,7 +33,7 @@ def main():
 
     print("*** Please ensure you have configured the {} config file in {}.\n".format(ctx, ctx_cnf["template_path"]))
 
-    confirm = input("The program will analyse your inputs and ask some questions before we change something in your machine. \nPlease confirm if you need to start hardening {}. (Enter yes/no): ".format(ctx))
+    confirm = input("The program will analyse your inputs and ask some questions before changing settings in your machine. \nPlease confirm if you need to start hardening {}. (Enter yes/no): ".format(ctx))
 
     confirm = confirm.lower()
     if confirm in ["yes", "y"]:
