@@ -1,4 +1,5 @@
 LogLevel VERBOSE
 PermitRootLogin prohibit-password
 PasswordAuthentication no
+UsePAM yes
 

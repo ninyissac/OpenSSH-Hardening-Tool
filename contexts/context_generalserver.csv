@@ -3,3 +3,4 @@ variable, expected_value, action_true, action_true_confirm, action_true_confirm_
 LogLevel, VERBOSE, None, None, None, You have set LogLevel to VERBOSE, alterValue, y, Do you want to change the value to {}? (Enter yes/no) :, You have set LogLevel to {} which is potentially a risk
 PermitRootLogin, prohibit-password, None, None, None, Webserver doesn't need root login, alterValue, y, Change to {}? (enter yes/no) :, The system is configred with root login which is potenitially a risk
 PasswordAuthentication, no, None, None, None, You have set PasswordAuthentication to no, alterStandardValue, y, default, You have set PasswordAuthentication to {} which is potentially a risk
+UsePAM, yes, None, None, None, You have set UsePAM to yes, alterStandardValue, y, default, You have set UsePAM to {} which is potentially a risk
