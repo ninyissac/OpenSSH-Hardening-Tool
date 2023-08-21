@@ -1,0 +1,8 @@
+LogLevel VERBOSE
+PubkeyAuthentication yes
+PasswordAuthentication no
+UsePAM yes
+PermitUserEnvironment no
+IgnoreRhosts yes
+AllowTcpForwarding no
+MaxAuthTries 3

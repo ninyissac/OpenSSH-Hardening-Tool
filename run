@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Export path to the config.ini file
+export CONFIG_PATH=`realpath program/config.ini`
+
+
+# Call the Program 
+python3 program

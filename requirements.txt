@@ -1,0 +1,3 @@
+# Inquirer ease the process of asking end user questions, parsing, validating answers, managing hierarchical prompts and providing error feedback.
+# https://python-inquirer.readthedocs.io/en/stable/
+inquirer
