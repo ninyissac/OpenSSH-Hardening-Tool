@@ -2,7 +2,7 @@
 variable, expected_value, action_true_info, action_false, action_false_confirm_text, action_false_info
 
 # Server settings
-LogLevel, VERBOSE, You set LogLevel to {}, alterValue, default :, You set LogLevel to {} which is not much informative
+LogLevel, VERBOSE, You set LogLevel to {}, alterValue, default, You set LogLevel to {} which is not much informative
 
 # Access control section
 PubkeyAuthentication, yes, PubkeyAuthentication enabled !, alterValue, Change to {}? (enter yes/no) :, Public key Authentication should be enabled
