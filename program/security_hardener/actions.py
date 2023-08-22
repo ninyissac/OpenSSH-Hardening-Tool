@@ -32,6 +32,7 @@ def commit(ctx, changes, new_keywords):
             tf.write(line)
 
     pat = r'^\s*#?\s*([A-Za-z0-9]+)\s+([A-Za-z0-9 ]+)\s*$'
+
     with open("/tmp/ssh_file_changed", "w") as tf:
         os.chmod("/tmp/ssh_file_changed",0o600)
         for i, line in enumerate(lines):
@@ -48,6 +49,8 @@ def commit(ctx, changes, new_keywords):
                     content = f"{cfg} {changes[cfg]}\n"
                     if content.startswith('#'):
                         content = content[1:]
+                    commit_message = f"Setting {cfg} to {changes[cfg]}"
+                    print(commit_message)
                     
             tf.write(content)
     
@@ -68,6 +71,8 @@ def commit(ctx, changes, new_keywords):
                 for k, v in new_keywords.items():
                     nkf.write("\n{} {}\n".format(k, v))
                     print("Adding new keyword with values:", k, v)
+                    message = f"Setting {k} to {v}"
+                    print(message)
 
     os.replace("/tmp/ssh_file_changed", ssh_system_config_file)
 

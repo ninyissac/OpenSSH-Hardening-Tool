@@ -69,6 +69,9 @@ def run(ctx, actions):
 
         try:
             actions.commit(ctx, applied_changes, new_keywords)
+            if actions.commit:
+                print("Changes committed successfully.")
+
 
         except Exception as e:
             print("Could not commit the changes in sshd_config config due to {}".format(e))
