@@ -53,7 +53,7 @@ def parse_csv_template(**kwargs):
         for i, line in enumerate(lines):
             line = line.strip()
             if not line or line.startswith('#'):  # process comments
-                print("In func pc, line for #:", line)
+                print("In func parse_csv_template, line for comments:", line)
                 continue
 
             if k is None: # process header
@@ -74,7 +74,7 @@ def parse_csv_template(**kwargs):
             parsed_dict = dict(zip(k, v))
             parsed_lines.append(parsed_dict)
 
-    print("In fuc pc, parsed_lines:", parsed_lines)
+    print("In func parse_csv_template, parsed_lines:", parsed_lines)
     return parsed_lines
 
 def parse_csv_template_two_cols(**kwargs):
@@ -114,4 +114,5 @@ def parse_csv_template_two_cols(**kwargs):
                 value = v[1]   # here v[1] is the value to v[0] , as per the csv file structure
                 parsed_lines[keyword] = value
 
+    print("In func parse_csv_template_two_cols, parsed_lines:", parsed_lines)
     return parsed_lines
