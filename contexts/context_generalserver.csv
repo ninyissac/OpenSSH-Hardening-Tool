@@ -1,10 +1,16 @@
+# Following line is the header -- DO NOT REMOVE OR EDIT --
 variable, expected_value, action_true_info, action_false, action_false_confirm_text, action_false_info
 
-LogLevel, VERBOSE, You have set LogLevel to {}, alterValue, Do you want to change the value to {}? (Enter yes/no) :, You have set LogLevel to {} which is not much informative
+# Server settings
+LogLevel, VERBOSE, You set LogLevel to {}, alterValue, default :, You set LogLevel to {} which is not much informative
+
+# Access control section
 PubkeyAuthentication, yes, PubkeyAuthentication enabled !, alterValue, Change to {}? (enter yes/no) :, Public key Authentication should be enabled
-PasswordAuthentication, no, You have set PasswordAuthentication to {}, alterStandardValue, default, You have set PasswordAuthentication to {} which is potentially a risk
+PasswordAuthentication, no, You set PasswordAuthentication to {}, alterStandardValue, default, You set PasswordAuthentication to {} which is potentially a risk
 UsePAM, yes, You have set UsePAM to {}, alterStandardValue, default, Pluggable Authentication module is not enabled
+MaxAuthTries, 3, You have set MaxAuthTries {}, alterValue, default,  MaxAuthTries is {} \, can be reduced to lower the attack attempts
 PermitUserEnvironment, no, You have set PermitUserEnvironment {}, alterStandardValue, default, PermitUserEnvironment should be disabled
+
+# Network section
 IgnoreRhosts, yes, You have set IgnoreRhosts {}, alterStandardValue, default, You have set IgnoreRhosts to {} which is potentially a risk
 AllowTcpForwarding, no, You have set AllowTcpForwarding {}, alterStandardValue, default, AllowTcpForwarding should be disabled
-MaxAuthTries, 3, You have set MaxAuthTries {}, alterValue, default,  MaxAuthTries is {} \, can be reduced to lower the attack attempts
