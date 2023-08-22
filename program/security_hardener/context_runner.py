@@ -9,11 +9,11 @@ def run(ctx, actions):
     pt_fs = parse_csv_template_two_cols(ctx=context_config[ctx]) # parsing the context template .csv file for the first and second coloms
 
     print("\nps:",ps)
-    print("-"*50)
+    print("="*50)
     print("\npt:",pt)
-    print("-"*50)
+    print("="*50)
     print("\npt_fs:",pt_fs)
-    print("-"*50)
+    print("="*50)
     print("\n")
 
     applied_changes = {}
