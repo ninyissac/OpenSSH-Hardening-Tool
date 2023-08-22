@@ -14,3 +14,4 @@ PermitUserEnvironment, no, You have set PermitUserEnvironment {}, alterStandardV
 # Network section
 IgnoreRhosts, yes, You have set IgnoreRhosts {}, alterStandardValue, default, You have set IgnoreRhosts to {} which is potentially a risk
 AllowTcpForwarding, no, You have set AllowTcpForwarding {}, alterStandardValue, default, AllowTcpForwarding should be disabled
+X11Forwarding, no, You have set X11Forwarding {}, alterStandardValue, default, X11Forwarding should be disabled

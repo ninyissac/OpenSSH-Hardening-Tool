@@ -31,7 +31,7 @@ def commit(ctx, changes, new_keywords):
         for i, line in enumerate(lines):
             tf.write(line)
 
-    pat = r'^#?([a-zA-Z]+)\s+[a-zA-Z0-9 ]+\s*$'
+    pat = r'^\s*#?\s*([A-Za-z0-9]+)\s+([A-Za-z0-9 ]+)\s*$'
     with open("/tmp/ssh_file_changed", "w") as tf:
         os.chmod("/tmp/ssh_file_changed",0o600)
         for i, line in enumerate(lines):
@@ -86,7 +86,7 @@ def include_path_commit(path, changes):
         for i, line in enumerate(lines):
             tf.write(line)
 
-    pat = r'^#?([a-zA-Z]+)\s+[a-zA-Z0-9 ]+\s*$'
+    pat = r'^\s*#?\s*([A-Za-z0-9]+)\s+([A-Za-z0-9 ]+)\s*$'
     with open("/tmp/include_path_ssh_file_changed", "w") as tf:
         os.chmod("/tmp/include_path_ssh_file_changed",0o644)
         for i, line in enumerate(lines):

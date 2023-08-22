@@ -15,7 +15,8 @@ def parse_template(**kwargs):
             file_path = SYSTEM_PATH
 
     template_file = ctx[file_path]
-    pat_vars = r'^#?\s*([A-Za-z]+)\s+(.+)$'
+
+    pat_vars = r'^\s*#?\s*([A-Za-z0-9]+)\s+([A-Za-z0-9 ]+)\s*$'
 
     with open(template_file, "r") as f:
         lines = f.readlines()
@@ -24,7 +25,9 @@ def parse_template(**kwargs):
             m = re.match(pat_vars, line)
 
             if m is not None:
-                parsed_lines[m.group(1)] = m.group(2).strip()
+                keyword = m.group(1)
+                if keyword not in parsed_lines:  # Only capture the first occurrence
+                    parsed_lines[m.group(1)] = m.group(2).strip()
 
             if file_path == SYSTEM_PATH:  # Check for the 'Include' keyword only in main system config file
                 # Locate the line with the Include directive

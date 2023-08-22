@@ -23,8 +23,9 @@ def run(ctx, actions):
 
         var = ci["variable"]
 
-        # expected value , values from .csv template file
-        ev = pt_fs[var]
+        if var in pt_fs:
+            ev = pt_fs[var]  # expected value , values from .csv template file
+
 
         # projected value , current values from system ssh config file
         try:
