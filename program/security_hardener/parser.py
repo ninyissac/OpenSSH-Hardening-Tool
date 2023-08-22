@@ -37,7 +37,7 @@ def parse_template(**kwargs):
     return parsed_lines, include_paths  # Return both parsed_lines and include_paths
 
 
-def parse_compiler(**kwargs):
+def parse_csv_template(**kwargs):
 # Function for parsing context template .csv file
 
     parsed_lines = []
