@@ -77,11 +77,11 @@ def parse_compiler(**kwargs):
     print("In fuc pc, parsed_lines:", parsed_lines)
     return parsed_lines
 
-def parse_csv_template_two_col(**kwargs):
+def parse_csv_template_two_cols(**kwargs):
 # Function for parsing context template .csv file
     # This function is for getting the first two columns
 
-    print("In func pt_fs:")
+    print("In func parse_csv_template_two_cols:")
     parsed_lines = {}
 
     ctx = kwargs["ctx"]

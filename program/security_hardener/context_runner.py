@@ -3,22 +3,28 @@ from security_hardener.parser import *
 
 def run(ctx, actions):
 
-    pl, _ = parse_template(ctx=context_config[ctx]) # parsing the context template file
-    pc = parse_compiler(ctx=context_config[ctx])    # parsing the context template .csv file
+    #pl, _ = parse_template(ctx=context_config[ctx]) # parsing the context template text file, not using now since we implement only .csv file, see pt_fs below
     ps, include_paths = parse_template(ctx=context_config[ctx], parse_file="system") # parsing the system ssh config file (/etc/ssh/sshd_config)
+    pt = parse_csv_template(ctx=context_config[ctx])     # parsing the context template .csv file for full keywords and values
+    pt_fs = parse_csv_template_two_cols(ctx=context_config[ctx]) # parsing the context template .csv file for the first and second coloms
 
+    print("\nps:",ps)
+    print("-"*50)
+    print("\npt:",pt)
+    print("-"*50)
+    print("\npt_fs:",pt_fs)
     print("-"*50)
     print("\n")
 
     applied_changes = {}
     new_keywords = {}
 
-    for ci in pc: # get all fileds from template .csv file
+    for ci in pt: # get all fileds from template .csv file
 
         var = ci["variable"]
 
-        # expected value , values from template files
-        ev = pl[var]
+        # expected value , values from .csv template file
+        ev = pt_fs[var]
 
         # projected value , current values from system ssh config file
         try:
@@ -74,6 +80,7 @@ def run(ctx, actions):
             print("Failed to restart ssh service due to {},\nFalling back to existing config".format(e))
             actions.revert_changes(ctx)
     
+
 # Following code is for processing /etc/ssh/sshd_config.d/*.conf files, ie. for Include keyword from sshd_config
     if include_paths:
 
@@ -85,18 +92,33 @@ def run(ctx, actions):
             with open(path, "r") as f:
                  lines = f.readlines()
 
+            parsed_lines = {}
+
             for i, line in enumerate(lines):
                 m = re.match(pat_vars, line)
 
-                parsed_lines = {}
                 if m is not None:
                     parsed_lines[m.group(1)] = m.group(2).strip()
+                    print("From IP:", parsed_lines)
+
+                print("Keys in pt_fs:", list(pt_fs.keys()))
 
                 for key, value in parsed_lines.items():
-                    ev = pl[key]
-                    cv = value
+                    stripped_key = key.strip()  # Strip any leading/trailing whitespace
+                    print("Stripped key:", stripped_key)
+                    ev = pt_fs.get(stripped_key)  # expected value fetched from csv template file
+                    print("ev:", ev)
+                    print("ev for {}: {}".format(stripped_key, ev))
+                    cv = value  # current value in Include files
+                    print("cv:", cv)
+
+                    # If the key is not in the .csv template, set ev to None to preserve the current value
+                    if ev is None:
+                        ev = cv
+
                     if ev != cv:
-                        r = (key, ev)
+                        r = (stripped_key, ev)
+                        print("r:", r)
                         include_path_applied_changes[r[0]] = r[1]
-                    if include_path_applied_changes:
-                         actions.include_path_commit(path, include_path_applied_changes)
+                        if include_path_applied_changes:
+                           actions.include_path_commit(path, include_path_applied_changes)
