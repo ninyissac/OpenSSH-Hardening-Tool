@@ -70,9 +70,8 @@ def commit(ctx, changes, new_keywords):
                 nkf.write("\n\n# Newly added keywords by the OpenSSH Hardener program, intended by the user.\n")
                 for k, v in new_keywords.items():
                     nkf.write("\n{} {}\n".format(k, v))
-                    print("Adding new keyword with values:", k, v)
-                    message = f"Setting {k} to {v}"
-                    print(message)
+                    new_keyword_message = f"Setting {k} to {v}"
+                    print(new_keyword_message)
 
     os.replace("/tmp/ssh_file_changed", ssh_system_config_file)
 
