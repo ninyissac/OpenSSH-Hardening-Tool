@@ -49,7 +49,7 @@ def commit(ctx, changes, new_keywords):
                     content = f"{cfg} {changes[cfg]}\n"
                     if content.startswith('#'):
                         content = content[1:]
-                    commit_message = f"Setting {cfg} to {changes[cfg]}"
+                    commit_message = f"\nSetting {cfg} to {changes[cfg]}"
                     print(commit_message)
                     
             tf.write(content)
@@ -70,7 +70,7 @@ def commit(ctx, changes, new_keywords):
                 nkf.write("\n\n# Newly added keywords by the OpenSSH Hardener program, intended by the user.\n")
                 for k, v in new_keywords.items():
                     nkf.write("\n{} {}\n".format(k, v))
-                    new_keyword_message = f"Setting {k} to {v}"
+                    new_keyword_message = f"\nSetting {k} to {v}"
                     print(new_keyword_message)
 
     os.replace("/tmp/ssh_file_changed", ssh_system_config_file)

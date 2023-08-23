@@ -70,7 +70,7 @@ def run(ctx, actions):
         try:
             actions.commit(ctx, applied_changes, new_keywords)
             if actions.commit:
-                print("Changes committed successfully.")
+                print("\nChanges committed successfully.")
 
 
         except Exception as e:
