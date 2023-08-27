@@ -7,10 +7,6 @@ def actionTrue(cfg_var, ev):
     return True
 
 
-def alterStandardValue(cfg_var, ev):
-    return (cfg_var, ev)
-
-
 def alterValue(cfg_var, ev):
     return (cfg_var, ev)
 
@@ -37,6 +33,7 @@ def commit(ctx, changes, new_keywords):
     cfgs = []
     with open("/tmp/ssh_file_changed", "w") as tf:
         os.chmod("/tmp/ssh_file_changed",0o600)
+        print("")
         for i, line in enumerate(lines):
 
             m = re.match(pat, line)
@@ -57,7 +54,7 @@ def commit(ctx, changes, new_keywords):
                     content = f"{cfg} {changes[cfg]}\n"
                     if content.startswith('#'):
                         content = content[1:]
-                    commit_message = f"\nSetting {cfg} to {changes[cfg]}"
+                    commit_message = f"Setting {cfg} to {changes[cfg]}"
                     print(commit_message)
                     
             tf.write(content)
@@ -65,11 +62,13 @@ def commit(ctx, changes, new_keywords):
     confirm = None
 
     if new_keywords:
-        print("New Keywords found:")
-        print("-"*25)
+        print("\nNew Keywords found:")
+        print("-"*50)
         for k, v in new_keywords.items():
-            print("\n{} {}".format(k, v))
+            print("{} {}".format(k, v))
+            print("")
 
+        print("-"*50)
         confirm = input("\nApply these new keywords? (Enter yes/no): ")
         confirm = confirm.lower()
 
@@ -78,8 +77,6 @@ def commit(ctx, changes, new_keywords):
                 nkf.write("\n\n# Newly added keywords by the OpenSSH Hardener program, intended by the user.\n")
                 for k, v in new_keywords.items():
                     nkf.write("\n{} {}\n".format(k, v))
-                    new_keyword_message = f"\nSetting {k} to {v}"
-                    print(new_keyword_message)
 
     os.replace("/tmp/ssh_file_changed", ssh_system_config_file)
 
@@ -122,7 +119,6 @@ def include_path_commit(path, changes):
 
 def check_cmd(cmd):
     r = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, text=True)
-    print("In check_cmd:", r)
     if r.returncode:
         return False
     

@@ -32,7 +32,7 @@ def main():
     ctx = select_context()
     ctx_cnf = context_config[ctx]
 
-    confirm = input("\nPlease confirm to start hardening \"\033[31m{}\033[0m\". (Enter yes/no): ".format(ctx))
+    confirm = input("Please confirm to start hardening \"\033[31m{}\033[0m\". (Enter yes/no): ".format(ctx))
 
     confirm = confirm.lower()
     if confirm in ["yes", "y"]:

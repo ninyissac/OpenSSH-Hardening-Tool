@@ -8,17 +8,11 @@ def run(ctx, actions):
     pt = parse_csv_template(ctx=context_config[ctx])     # parsing the context template .csv file for full keywords and values
     pt_fs = parse_csv_template_two_cols(ctx=context_config[ctx]) # parsing the context template .csv file for the first and second coloms
 
-    print("\nps:",ps)
-    print("="*50)
-    print("\npt:",pt)
-    print("="*50)
-    print("\npt_fs:",pt_fs)
-    print("="*50)
-    print("\n")
 
     applied_changes = {}
     new_keywords = {}
 
+    print("")
     for ci in pt: # get all fileds from template .csv file
 
         var = ci["variable"]
@@ -30,15 +24,12 @@ def run(ctx, actions):
         # projected value , current values from system ssh config file
         try:
             pv = ps[var]
-            print("VAR:", pv)
         except Exception as e:
             if actions.check_cmd("man sshd_config | grep -iw {}".format(var)):
                 new_keywords[var] = ev
-                print("new_keywords[var]:", new_keywords[var])
-                print("NK, ev:",ev)
 
                 info = ci["action_true_info"].format(ev)
-                print("{} {}.".format("\033[33m" + "?" + "\033[0m", info))
+                print("\n{} {}.".format("\033[33m" + "?" + "\033[0m", info))
 
                 action_confirm_text = ci["action_false_confirm_text"]
 
@@ -54,7 +45,6 @@ def run(ctx, actions):
                         if r:
                             try:
                                 new_keywords[r[0]] = r[1]
-                                print("new_keywords:", new_keywords)
                             except Exception as e:
                                 pass
                 continue
@@ -64,7 +54,7 @@ def run(ctx, actions):
         ac = "y"
         if ev != pv:
             info = ci["action_false_info"].format(pv)
-            print("{} {}.".format("\033[31m" + "X" + "\033[0m", info))
+            print("\n{} {}.".format("\033[31m" + "X" + "\033[0m", info))
 
             action_confirm_text = ci["action_false_confirm_text"]
 
@@ -89,12 +79,13 @@ def run(ctx, actions):
                     except Exception as e:
                         pass
         
+    print("")
     if applied_changes or new_keywords:
 
         try:
             actions.commit(ctx, applied_changes, new_keywords)
             if actions.commit:
-                print("\nChanges committed successfully.")
+                print("\nChanges committed successfully.\n")
 
 
         except Exception as e:
@@ -127,18 +118,12 @@ def run(ctx, actions):
 
                 if m is not None:
                     parsed_lines[m.group(1)] = m.group(2).strip()
-                    print("From IP:", parsed_lines)
 
-                print("Keys in pt_fs:", list(pt_fs.keys()))
 
                 for key, value in parsed_lines.items():
                     stripped_key = key.strip()  # Strip any leading/trailing whitespace
-                    print("Stripped key:", stripped_key)
                     ev = pt_fs.get(stripped_key)  # expected value fetched from csv template file
-                    print("ev:", ev)
-                    print("ev for {}: {}".format(stripped_key, ev))
                     cv = value  # current value in Include files
-                    print("cv:", cv)
 
                     # If the key is not in the .csv template, set ev to None to preserve the current value
                     if ev is None:
@@ -146,7 +131,6 @@ def run(ctx, actions):
 
                     if ev != cv:
                         r = (stripped_key, ev)
-                        print("r:", r)
                         include_path_applied_changes[r[0]] = r[1]
                         if include_path_applied_changes:
                            actions.include_path_commit(path, include_path_applied_changes)
