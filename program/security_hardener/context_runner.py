@@ -30,9 +30,33 @@ def run(ctx, actions):
         # projected value , current values from system ssh config file
         try:
             pv = ps[var]
+            print("VAR:", pv)
         except Exception as e:
             if actions.check_cmd("man sshd_config | grep -iw {}".format(var)):
                 new_keywords[var] = ev
+                print("new_keywords[var]:", new_keywords[var])
+                print("NK, ev:",ev)
+
+                info = ci["action_true_info"].format(ev)
+                print("{} {}.".format("\033[33m" + "?" + "\033[0m", info))
+
+                action_confirm_text = ci["action_false_confirm_text"]
+
+                if action_confirm_text == "default": # if the entry in .csv file is default, set the following as confirm text
+                    action_confirm_text = "Are you sure to add these values {}? (Enter yes/no): "
+
+                ac = input(action_confirm_text.format(ev))
+                action = ci["action_false"] # Retrives function name from .cvs file and pass to getattr below
+
+                if action != "None":
+                    if ac.lower() in ["y", "yes"]:
+                        r = getattr(actions, action)(var, ev)
+                        if r:
+                            try:
+                                new_keywords[r[0]] = r[1]
+                                print("new_keywords:", new_keywords)
+                            except Exception as e:
+                                pass
                 continue
             else:
                 print("Warning: {} is not a valid keyword in sshd_config".format(var))
@@ -88,7 +112,7 @@ def run(ctx, actions):
 # Following code is for processing /etc/ssh/sshd_config.d/*.conf files, ie. for Include keyword from sshd_config
     if include_paths:
 
-        pat_vars = r'^#?\s*([A-Za-z]+)\s+(.+)$'
+        pat_vars = r'^\s*#?\s*([A-Za-z0-9\-]+)\s+(.*?)\s*$'
 
         include_path_applied_changes = {}
 

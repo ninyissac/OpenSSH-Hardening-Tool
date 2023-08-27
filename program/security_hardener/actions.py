@@ -31,8 +31,10 @@ def commit(ctx, changes, new_keywords):
         for i, line in enumerate(lines):
             tf.write(line)
 
-    pat = r'^\s*#?\s*([A-Za-z0-9]+)\s+([A-Za-z0-9 ]+)\s*$'
+    pat = r'^\s*#?\s*([A-Za-z0-9\-]+)\s+(.*?)\s*$'
+    
 
+    cfgs = []
     with open("/tmp/ssh_file_changed", "w") as tf:
         os.chmod("/tmp/ssh_file_changed",0o600)
         for i, line in enumerate(lines):
@@ -43,6 +45,12 @@ def commit(ctx, changes, new_keywords):
 
             if m is not None:
                 cfg = m.group(1)
+
+                if cfg in cfgs:
+                    tf.write(content)
+                    continue
+
+                cfgs.append(cfg)
 
                 if cfg in changes:
 
@@ -114,6 +122,7 @@ def include_path_commit(path, changes):
 
 def check_cmd(cmd):
     r = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, text=True)
+    print("In check_cmd:", r)
     if r.returncode:
         return False
     

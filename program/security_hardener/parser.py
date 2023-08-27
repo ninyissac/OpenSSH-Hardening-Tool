@@ -16,7 +16,7 @@ def parse_template(**kwargs):
 
     template_file = ctx[file_path]
 
-    pat_vars = r'^\s*#?\s*([A-Za-z0-9]+)\s+([A-Za-z0-9 ]+)\s*$'
+    pat_vars = r'^\s*#?\s*([A-Za-z0-9\-]+)\s+(.*?)\s*$'
 
     with open(template_file, "r") as f:
         lines = f.readlines()
