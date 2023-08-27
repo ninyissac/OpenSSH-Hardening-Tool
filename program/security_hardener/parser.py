@@ -56,12 +56,10 @@ def parse_csv_template(**kwargs):
         for i, line in enumerate(lines):
             line = line.strip()
             if not line or line.startswith('#'):  # process comments
-                print("In func parse_csv_template, line for comments:", line)
                 continue
 
             if k is None: # process header
                 k = [x.strip() for x in line.split(",")]
-                print("In func pc, k:", k)
                 continue
 
             comma_value = False
@@ -77,14 +75,12 @@ def parse_csv_template(**kwargs):
             parsed_dict = dict(zip(k, v))
             parsed_lines.append(parsed_dict)
 
-    print("In func parse_csv_template, parsed_lines:", parsed_lines)
     return parsed_lines
 
 def parse_csv_template_two_cols(**kwargs):
 # Function for parsing context template .csv file
     # This function is for getting the first two columns
 
-    print("In func parse_csv_template_two_cols:")
     parsed_lines = {}
 
     ctx = kwargs["ctx"]
@@ -117,5 +113,4 @@ def parse_csv_template_two_cols(**kwargs):
                 value = v[1]   # here v[1] is the value to v[0] , as per the csv file structure
                 parsed_lines[keyword] = value
 
-    print("In func parse_csv_template_two_cols, parsed_lines:", parsed_lines)
     return parsed_lines
