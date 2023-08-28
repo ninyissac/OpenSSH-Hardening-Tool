@@ -1,5 +1,5 @@
 # Following line is the header -- DO NOT REMOVE OR EDIT --
-variable, expected_value, action_true_info, action_false, action_false_confirm_text, action_false_info
+keyword, expected_value, action_true_info, action_false, action_false_confirm_text, action_false_info
 
 # Server settings
 LogLevel, VERBOSE, You set LogLevel to {}, alterValue, default, You set LogLevel to {} which is not much informative

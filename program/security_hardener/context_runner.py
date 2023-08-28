@@ -15,7 +15,7 @@ def run(ctx, actions):
     print("")
     for ci in pt: # get all fileds from template .csv file
 
-        var = ci["variable"]
+        var = ci["keyword"]
 
         if var in pt_fs:
             ev = pt_fs[var]  # expected value , values from .csv template file
