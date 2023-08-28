@@ -9,14 +9,14 @@ Port, 3322, You set Port to {}, alterValue, default, You set Port to {} which is
 PermitRootLogin, no, 'root' user login is disabled, alterValue, default, User 'root' login should be disabled
 PasswordAuthentication, no, You set PasswordAuthentication to {}, alterValue, default, You set PasswordAuthentication to {} which is potentially a risk
 MaxAuthTries, 3, You have set MaxAuthTries to {}, alterValue, default,  MaxAuthTries is {} \, can be reduced to lower the attack attempts
-MaxSessions, 2, You have set MaxSessions to {}, alterValue, default,  MaxSessions should be reduced to {}
+MaxSessions, 2, You have set MaxSessions to {}, alterValue, default,  MaxSessions should be reduced
 AllowAgentForwarding, no, You have set AllowAgentForwarding to {}, alterValue, default,  AllowAgentForwarding should be disabled
 
 # Network section
 AllowTcpForwarding, no, You have set AllowTcpForwarding {}, alterValue, default, AllowTcpForwarding should be disabled
 X11Forwarding, no, You have set X11Forwarding {}, alterValue, default, X11Forwarding should be disabled
-ClientAliveInterval, 15, You have set ClientAliveInterval to {}, alterValue, default, ClientAliveInterval should be {}
-ClientAliveCountMax, 2, You have set ClientAliveCountMax to {}, alterValue, default, ClientAliveCountMax should be {}
+ClientAliveInterval, 15, You have set ClientAliveInterval to {}, alterValue, default, ClientAliveInterval should be properly configured
+ClientAliveCountMax, 2, You have set ClientAliveCountMax to {}, alterValue, default, ClientAliveCountMax should be configured properly
 Compression, no, You have set Compression to {}, alterValue, default, Compression should be disabled
 TCPKeepAlive, no, You have set TCPKeepAlive to {}, alterValue, default, TCPKeepAlive should be disabled
 
