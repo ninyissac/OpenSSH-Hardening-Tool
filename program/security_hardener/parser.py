@@ -46,7 +46,7 @@ def parse_csv_template(**kwargs):
     parsed_lines = []
     ctx = kwargs["ctx"]
 
-    template_file = ctx[TEMPLATE_COMPILER_PATH]
+    template_file = ctx[TEMPLATE_PATH]
 
     with open(template_file, "r") as f:
         lines = f.readlines()
@@ -84,7 +84,7 @@ def parse_csv_template_two_cols(**kwargs):
     parsed_lines = {}
 
     ctx = kwargs["ctx"]
-    template_file = ctx[TEMPLATE_COMPILER_PATH]
+    template_file = ctx[TEMPLATE_PATH]
 
     with open(template_file, "r") as f:
         lines = f.readlines()

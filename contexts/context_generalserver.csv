@@ -5,13 +5,15 @@ variable, expected_value, action_true_info, action_false, action_false_confirm_t
 LogLevel, VERBOSE, You set LogLevel to {}, alterValue, default, You set LogLevel to {} which is not much informative
 
 # Access control section
-PubkeyAuthentication, yes, PubkeyAuthentication enabled !, alterValue, Change to {}? (enter yes/no) :, Public key Authentication should be enabled
-PasswordAuthentication, no, You set PasswordAuthentication to {}, alterStandardValue, default, You set PasswordAuthentication to {} which is potentially a risk
-UsePAM, yes, You have set UsePAM to {}, alterStandardValue, default, Pluggable Authentication module is not enabled
+PasswordAuthentication, no, You set PasswordAuthentication to {}, alterValue, default, You set PasswordAuthentication to {} which is potentially a risk
 MaxAuthTries, 3, You have set MaxAuthTries {}, alterValue, default,  MaxAuthTries is {} \, can be reduced to lower the attack attempts
-PermitUserEnvironment, no, You have set PermitUserEnvironment {}, alterStandardValue, default, PermitUserEnvironment should be disabled
 
 # Network section
-IgnoreRhosts, yes, You have set IgnoreRhosts {}, alterStandardValue, default, You have set IgnoreRhosts to {} which is potentially a risk
-AllowTcpForwarding, no, You have set AllowTcpForwarding {}, alterStandardValue, default, AllowTcpForwarding should be disabled
-X11Forwarding, no, You have set X11Forwarding {}, alterStandardValue, default, X11Forwarding should be disabled
+AllowTcpForwarding, no, You have set AllowTcpForwarding {}, alterValue, default, AllowTcpForwarding should be disabled
+X11Forwarding, no, You have set X11Forwarding {}, alterValue, default, X11Forwarding should be disabled
+
+# Cryptographic Algorithms and Protocols
+KexAlgorithms, curve25519-sha256\,curve25519-sha256@libssh.org\,ecdh-sha2-nistp256\,ecdh-sha2-nistp384\,ecdh-sha2-nistp521\,diffie-hellman-group-exchange-sha256\,diffie-hellman-group16-sha512\,diffie-hellman-group18-sha512\,diffie-hellman-group14-sha256, You have set kexalgorithms {}, alterValue, default, KexAlgorithms should be strong
+
+# User section
+AllowUsers, alice bob, AllowUsers -> {}, alterValue, default, Allowed users {}
