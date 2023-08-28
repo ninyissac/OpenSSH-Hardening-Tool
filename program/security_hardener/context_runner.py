@@ -37,7 +37,7 @@ def run(ctx, actions):
                     action_confirm_text = "Are you sure to add these values {}? (Enter yes/no): "
 
                 ac = input(action_confirm_text.format(ev))
-                action = ci["action_false"] # Retrives function name from .cvs file and pass to getattr below
+                action = ci["action_false_function"] # Retrives function name from .cvs file and pass to getattr below
 
                 if action != "None":
                     if ac.lower() in ["y", "yes"]:
@@ -62,7 +62,7 @@ def run(ctx, actions):
                 action_confirm_text = "Do you want to change value to {}? (Enter yes/no): "
 
             ac = input(action_confirm_text.format(ev))
-            action = ci["action_false"] # Retrives function name from .cvs file and pass to getattr below
+            action = ci["action_false_function"] # Retrives function name from .cvs file and pass to getattr below
         
         else:
             info = ci["action_true_info"].format(pv)
