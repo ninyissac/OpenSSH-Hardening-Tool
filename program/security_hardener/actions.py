@@ -3,6 +3,8 @@ from security_hardener.backup import backup
 import os
 import subprocess
 
+## Following are the functions that can be called from the CSV template file ##
+
 def actionTrue(cfg_var, ev):
     return True
 
@@ -10,7 +12,10 @@ def actionTrue(cfg_var, ev):
 def alterValue(cfg_var, ev):
     return (cfg_var, ev)
 
+## END OF USER DEFINED FUNCTIONS SECTION ##
 
+
+# Following are the fuctions used internally by the program
 def commit(ctx, changes, new_keywords):
     import re
 
