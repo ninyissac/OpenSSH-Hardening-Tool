@@ -1,0 +1,29 @@
+# Following line is the header -- DO NOT REMOVE OR EDIT --
+keyword, recommended_value, action_true_info, action_false_function, action_false_confirm_text, action_false_info
+
+# Server settings
+LogLevel, VERBOSE, You set LogLevel to {}, alterValue, default, You set LogLevel to {} which is not much informative
+Port, 3322, You set Port to {}, alterValue, default, You set Port to {} which is a risk
+
+# Access control section
+PermitRootLogin, no, 'root' user login is disabled, alterValue, default, User 'root' login should be disabled
+PasswordAuthentication, no, You set PasswordAuthentication to {}, alterValue, default, You set PasswordAuthentication to {} which is potentially a risk
+MaxAuthTries, 3, You have set MaxAuthTries to {}, alterValue, default,  MaxAuthTries is {} \, can be reduced to lower the attack attempts
+MaxSessions, 2, You have set MaxSessions to {}, alterValue, default,  MaxSessions should be reduced
+AllowAgentForwarding, no, You have set AllowAgentForwarding to {}, alterValue, default,  AllowAgentForwarding should be disabled
+
+# Network section
+AllowTcpForwarding, no, You have set AllowTcpForwarding {}, alterValue, default, AllowTcpForwarding should be disabled
+X11Forwarding, no, You have set X11Forwarding {}, alterValue, default, X11Forwarding should be disabled
+ClientAliveInterval, 15, You have set ClientAliveInterval to {}, alterValue, default, ClientAliveInterval should be properly configured
+ClientAliveCountMax, 2, You have set ClientAliveCountMax to {}, alterValue, default, ClientAliveCountMax should be configured properly
+Compression, no, You have set Compression to {}, alterValue, default, Compression should be disabled
+TCPKeepAlive, no, You have set TCPKeepAlive to {}, alterValue, default, TCPKeepAlive should be disabled
+
+# Cryptographic Algorithms and Protocols
+Ciphers, chacha20-poly1305@openssh.com\,aes256-gcm@openssh.com\,aes128-gcm@openssh.com\,aes256-ctr\,aes192-ctr\,aes128-ctr, You have set Ciphers - {}, alterValue, default, Ciphers should be strong
+MACs, hmac-sha2-256-etm@openssh.com\,hmac-sha2-512-etm@openssh.com\,umac-128-etm@openssh.com, You have set MACs - {}, alterValue, default, MACs should be strong
+KexAlgorithms, curve25519-sha256\,curve25519-sha256@libssh.org\,ecdh-sha2-nistp256\,ecdh-sha2-nistp384\,ecdh-sha2-nistp521\,diffie-hellman-group-exchange-sha256\,diffie-hellman-group16-sha512\,diffie-hellman-group18-sha512\,diffie-hellman-group14-sha256, You have set kexalgorithms {}, alterValue, default, KexAlgorithms should be strong
+
+# User section
+AllowUsers, webadmin, AllowUsers -> {}, alterValue, default, Allowed users {}
