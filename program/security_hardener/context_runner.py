@@ -25,7 +25,7 @@ def run(ctx, actions):
         try:
             pv = ps[var]
         except Exception as e:
-            if actions.check_cmd("man sshd_config | grep -iw {}".format(var)):
+            if actions.check_cmd("man sshd_config 2>/dev/null | grep -iw {}".format(var)):
                 new_keywords[var] = ev
 
                 info = ci["action_true_info"].format(ev)
