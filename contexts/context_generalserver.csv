@@ -6,7 +6,7 @@ LogLevel, VERBOSE, You set LogLevel to {}, alterValue, default, You set LogLevel
 Port, 3322, You set Port to {}, alterValue, default, You set Port to {} which is a risk
 
 # Access control section
-PermitRootLogin, no, 'root' user login is disabled, alterValue, default, User 'root' login should be disabled
+PermitRootLogin, prohibit-password, 'root' user login is allowed only by key, alterValue, Allow root user login with key? (enter yes/no) :, Allow 'root' login only with key
 PasswordAuthentication, no, You set PasswordAuthentication to {}, alterValue, default, You set PasswordAuthentication to {} which is potentially a risk
 MaxAuthTries, 3, You have set MaxAuthTries to {}, alterValue, default,  MaxAuthTries is {} \, can be reduced to lower the attack attempts
 MaxSessions, 2, You have set MaxSessions to {}, alterValue, default,  MaxSessions should be reduced
